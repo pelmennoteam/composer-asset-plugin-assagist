@@ -1,7 +1,7 @@
 <?php
 /**
- * @author  pelmen
- * @company Itex.RU
+ * @author  Danil Syromolotov <pelmennoteam@gmail.com>
+ * @company 0DaySolution
  */
 
 namespace Solution\Composer\AssagistAssetPlugin;
