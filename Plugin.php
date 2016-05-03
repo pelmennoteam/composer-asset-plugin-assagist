@@ -21,8 +21,6 @@ class Plugin implements PluginInterface
     public function activate(Composer $composer, IOInterface $io)
     {
         $rfs = new RemoteFilesystem($io);
-        AssagistCache::newInstance(array(
-            'rfs' => $rfs,
-        ));
+        new AssagistCache($rfs);
     }
 }
