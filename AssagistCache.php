@@ -45,6 +45,19 @@ class AssagistCache extends AbstractAssetsRepositoryCache
         $url = str_replace('%package%', $name, $this->_typeMap[$assetsRepositoryType]);
         $json = (string)$this->rfs->getContents((string)parse_url($url, PHP_URL_HOST), $url);
         $data = JsonFile::parseJson($json, $url);
-        return $data;
+        $items = array();
+        foreach ($data as $cacheItem) {
+            $item = array(
+                'version' => $cacheItem['version'],
+                'dist' => array(
+                    'url' => $cacheItem['dist'],
+                    'type' => isset($cacheItem['tarballType']) ? $cacheItem['tarballType'] : 'zip',
+                ),
+            );
+            if (isset($cacheItem['require']))
+                $item['require'] = $cacheItem['require'];
+            $items[] = $item;
+        }
+        return $items;
     }
 }
