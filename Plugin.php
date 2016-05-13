@@ -21,6 +21,6 @@ class Plugin implements PluginInterface
     public function activate(Composer $composer, IOInterface $io)
     {
         $rfs = new RemoteFilesystem($io);
-        new AssagistCache($rfs);
+        new AssagistCache($rfs, $io);
     }
 }
